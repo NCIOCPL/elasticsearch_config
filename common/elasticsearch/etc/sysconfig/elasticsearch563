@@ -1,0 +1,49 @@
+################################
+# Elasticsearch
+################################
+
+# Elasticsearch home directory
+ES_HOME=/usr/local/elasticsearch/elasticsearch-5.6.3
+
+# Elasticsearch configuration directory
+CONF_DIR=/data/elastic563/etc
+
+# Elasticsearch configuration file
+CONF_FILE=$CONF_DIR/elasticsearch.yml
+
+# Elasticsearch data directory
+DATA_DIR=/data/elastic563/data
+
+# Elasticsearch logs directory
+LOG_DIR=/data/elastic563/log
+
+# Elasticsearch PID directory
+PID_DIR=/data/elastic563/run
+
+
+# Path to the GC log file
+ES_GC_LOG_FILE=$LOG_DIR/gc.log
+
+################################
+# Elasticsearch service
+################################
+
+# SysV init.d
+#
+# When executing the init script, this user will be used to run the elasticsearch service.
+# The default value is 'elasticsearch' and is declared in the init.d file.
+# Note that this setting is only used by the init script. If changed, make sure that
+# the configured user can read and write into the data, work, plugins and log directories.
+# For systemd service, the user is usually configured in file /usr/lib/systemd/system/elasticsearch.service
+ES_USER=elasticsearch
+ES_GROUP=elasticsearch
+
+################################
+# System properties
+################################
+
+
+
+
+export HOSTNAMEFULL=`hostname`
+export JAVA_HOME=/usr/lib/jdk1.8.0_151

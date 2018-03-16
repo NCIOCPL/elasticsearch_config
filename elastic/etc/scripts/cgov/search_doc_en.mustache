@@ -1,9 +1,8 @@
-{
-  "filter":{"prefix": {"searchurl.raw":"{{my_site}}"}
-  },
+{  
    "query": {
       "bool": {
           "must": [
+              {"prefix": {"searchurl.raw":"{{my_site}}"}},         
               {"bool":{
                   "should":[
                         { "match": { "content": {"query":"{{my_value}}", "operator" : "and", "boost":1 } }}, 
