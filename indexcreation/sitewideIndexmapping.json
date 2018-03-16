@@ -37,79 +37,73 @@
     "doc": {
 			 "properties": {
                "anchor": {
-                  "type": "string"
+                  "type": "text"
                },
                
                "type": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "type": "keyword"
                }
 			   ,
                "content": {
-                "type" : "string",
+                "type" : "text",
 				"analyzer": "cgovenglish",
-				"fields" : { "es" : {"type": "string","analyzer": "spanish"}}
+				"fields" : { "es" : {"type": "text","analyzer": "spanish"}}
                },
                "digest": {
-                  "type": "string"
+                  "type": "keyword"
                },
                "host": {
-                  "type": "string",
-                  "index": "not_analyzed"
+                  "type": "keyword"
                },
                "id": {
-                  "type": "string"
+                  "type": "text"
                },
-               "metatag-content-language": {
-                  "type": "string",
-                  "index": "not_analyzed"
+               "metatag.content-language": {
+                  "type": "keyword"
                },
-               "metatag-description": {
-                "type" : "string",
+               "metatag.description": {
+                "type" : "text",
 				"analyzer": "cgovenglish",
 				"norms": { "enabled": false },
 				"fields" : 
-				{ "es" : {"type": "string","analyzer": "spanish","norms": { "enabled": false }}}
+				{ "es" : {"type": "text","analyzer": "spanish","norms": { "enabled": false }}}
                },
-               "metatag-keywords": {
-                "type" : "string",
+               "metatag.keywords": {
+                "type" : "text",
 				"analyzer": "cgovenglish",
-				"fields" : { "es" : {"type": "string","analyzer": "spanish"}}
+				"fields" : { "es" : {"type": "text","analyzer": "spanish"}}
                },
-			   "metatag-dcterms-type": {
-                  "type": "string",
-                  "index": "not_analyzed"
+			   "metatag.dcterms-type": {
+                  "type": "keyword"
                },
                "segment": {
-                  "type": "string"
+                  "type": "keyword"
                },
                "title": {
-                "type" : "string"
+                "type" : "text"
 				      }
 				,
                "searchtitle": {
-                "type": "string",
+                "type": "text",
                 "analyzer": "cgovenglish",
 				        "fields" : { 
-				          "es" : {"type": "string","analyzer": "spanish"}
+				          "es" : {"type": "text","analyzer": "spanish"}
 				          
 				        }
 				}
 				       ,
                "tstamp": {
-                  "type": "date",
-                  "format": "dateOptionalTime"
+                  "type": "text"
                },
                
-               "url": {"type": "string",
-               "index": "not_analyzed"},
+               "url": {"type": "keyword"},
                
                "searchurl": {
-                  "type": "string",
+                  "type": "text",
                   "analyzer": "cgovenglish",
                   "fields" : { 
-                    "raw" : {"type": "string","index": "not_analyzed"},
-                    "es" : {"type": "string","analyzer": "spanish"}
+                    "raw" : {"type": "keyword"},
+                    "es" : {"type": "text","analyzer": "spanish"}
                   }
                   
                }, 

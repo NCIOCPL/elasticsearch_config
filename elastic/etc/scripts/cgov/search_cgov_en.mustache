@@ -1,15 +1,26 @@
 {
-      "filter": 
-  {"bool":
-  {"should":[
-    {"term":{"metatag-content-language": "en"}},
-    {"missing" : { "field" : "metatag-content-language" }}
-    ]
-  }},
-   "query": {
-       "boosting": {
+ "query": {
+    "boosting": {
       "positive": {
       "bool": {
+        "filter":[
+        {"bool":{
+                  "should":[
+                  {"term":{"metatag.content-language": "en-us"}},
+                    {"bool": {
+                        "must_not": {
+                            "exists": {
+                                "field": "metatag-content-language"
+                                    }
+                                }
+                            }
+                    }
+                  ]
+                  }
+   
+            }
+        ],
+      
           "must": [
               {"bool":{
                   "should":[

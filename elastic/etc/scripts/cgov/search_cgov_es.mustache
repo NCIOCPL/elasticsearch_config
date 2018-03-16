@@ -1,11 +1,8 @@
-{
-  "filter": {"term":{"metatag-content-language": "es"}
-   
-  },
-    "query": {
+{"query": {
       "bool": {
-          "must": [
-              {"bool":{
+         "must": [
+            {"term":{"metatag.content-language": "es"}},
+            {"bool":{
                   "should":[
                         { "match": { "content.es": {"query":"{{my_value}}", "operator" : "and", "boost":1 } }}, 
                         { "match": { "searchtitle.es": {  "query": "{{my_value}}","boost": 1}}},
@@ -16,9 +13,8 @@
                         }}
               ]}}
           ], 
-        "should": [
-              
-              { "term": { "type": {"value": "text/html", "boost": 1}}},
+        "should":[
+                 { "term": { "type": {"value": "text/html", "boost": 1}}},
                    { "bool":  { 
                     "should": [
                       { "term": { "host": {"value": "www.cancer.gov", "boost": 1}}}   
