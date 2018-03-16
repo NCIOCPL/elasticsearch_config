@@ -31,12 +31,11 @@
        "synonyms": {
         "properties": {
           "category": {
-            "type": "string",
+            "type": "text",
             "analyzer": "nostem"
           },
           "contentid": {
-            "type": "string",
-            "index": "not_analyzed"
+            "type": "keyword"
           },
           "is_exact": {
             "type": "boolean"
@@ -45,11 +44,10 @@
             "type": "boolean"
           },
           "language": {
-            "type": "string",
-            "index": "not_analyzed"
+            "type": "keyword"
           },
           "synonym": {
-            "type": "string",
+            "type": "text",
             "analyzer": "nostem"
           },
           "tokencount": {
