@@ -1,5 +1,0 @@
-{
-     "actions" : [
-        { "add" : { "index" : "sitewidesearch_denali", "alias" : "cgov" } }
-    ]
-}
