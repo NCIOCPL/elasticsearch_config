@@ -3,25 +3,25 @@
 ################################
 
 # Elasticsearch home directory
-ES_HOME=/usr/local/elasticsearch/current
+ES_HOME=/usr/local/elasticsearch/elasticsearch-2.3.5
 
 # Elasticsearch configuration directory
-CONF_DIR=/data/elastic/etc
+CONF_DIR=/data/elastic235/etc
 
 # Elasticsearch configuration file
 CONF_FILE=$CONF_DIR/elasticsearch.yml
 
 # Elasticsearch data directory
-DATA_DIR=/data/elastic/data
+DATA_DIR=/data/elastic235/data
 
 # Elasticsearch logs directory
-LOG_DIR=/data/elastic/log
+LOG_DIR=/data/elastic235/log
 
 # Elasticsearch work directory
-WORK_DIR=/data/elastic/tmp
+WORK_DIR=/data/elastic235/tmp
 
 # Elasticsearch PID directory
-PID_DIR=/data/elastic/run
+PID_DIR=/data/elastic235/run
 
 # Heap size defaults to 256m min, 1g max
 # Set ES_HEAP_SIZE to 50% of available RAM, but no more than 31g

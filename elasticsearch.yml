@@ -124,9 +124,9 @@ readonlyrest:
     enable: true
     ssl:
       enable: true
-      keystore_file: "${KEYSTORE_FILE}"
-      keystore_pass: ${KEYSTORE_PASS}
-      key_pass: ${KEY_PASS}
+      keystore_file: "/data/elastic235/etc/p1562new.jks"
+      keystore_pass: changeit
+      key_pass: 6116otsa
       
     # HTTP response body in case of forbidden request.
     # If this is null or omitted, the name of the first violated access control rule is returned (useful for debugging!)
@@ -141,20 +141,20 @@ readonlyrest:
       type: allow
       ## Stage Hosts
       ##hosts: [local, nutch, node 1, node 2, node 3, prod bastion (for web requests)]
-      hosts: [${INTERNAL_SERVERS}]
+      hosts: [127.0.0.1, 10.133.224.90, 10.133.224.94, 10.133.224.95, 10.133.224.96, 10.133.230.10]
 
     # from these IP addresses, accept any method, any URI, any HTTP body
     - name: full access to internal servers from temporary dev VMs
       type: allow
       ## Min & Bryan's Dev VM
-      hosts: [${DEVELOPER_PC}]
+      hosts: [10.133.108.185, 10.133.108.188]
       
     - name: bestbet loader test  
-      auth_key: ${ADMIN_AUTH_KEY}
+      auth_key: admin:passwd3
       type: allow
 
     - name: bestbet, sitewideapi   
-      auth_key: ${READONLY_AUTH_KEY}
+      auth_key: readonly:D1ngYou
       type: allow
       methods: [POST]
       uri_re: [cgov/_search/template, bestbets/_search/template, autosg/_search/template]
@@ -166,7 +166,7 @@ readonlyrest:
       uri_re: cgov/_search/template
       ## Basically all WCMS web servers
       #Dev VM {01-15}, Web Servers (nci-ws) BLUE, RED, PINK, QA, DT, STAGE, PROD
-      hosts: [${WEB_SERVERS}]
+      hosts: [10.133.108.188,10.133.108.189,10.133.108.190,10.133.108.204,10.133.108.203,10.133.108.202,10.133.108.182,10.133.108.183,10.133.108.184,10.133.108.185,10.133.108.193,10.133.108.194,10.133.108.195,10.133.108.196,10.133.108.197,10.133.108.168,10.133.108.169,10.133.108.170,10.133.106.68,10.133.106.69,10.133.104.32,10.133.104.16,10.133.104.17,10.133.98.64,10.133.160.41,10.133.196.20,10.133.98.65,10.133.160.42,10.133.196.21]
       ## No maxBodyLength for this request - search template requires a body
 
     # From external hosts, accept only GET and OPTION methods only, for all other requests, if the HTTP requqest body is empty
@@ -176,3 +176,4 @@ readonlyrest:
       maxBodyLength: 0
 
       
+
