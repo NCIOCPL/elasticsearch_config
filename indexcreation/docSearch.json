@@ -1,0 +1,33 @@
+{ "template" : {
+  "filter":{"prefix": {"searchurl.raw":"{{my_site}}"}
+  },
+   "query": {
+      "bool": {
+          "must": [
+              {"bool":{
+                  "should":[
+                        { "match": { "content": {"query":"{{my_value}}", "operator" : "and", "boost":1 } }}, 
+                        { "match": { "searchtitle": {  "query": "{{my_value}}","boost": 1}}},
+                        { "match": { "searchurl": {"query":"{{my_value}}", "boost": 1} }},
+                       {"match_phrase": { "content": {"query":"{{my_value}}", "boost": 1} }},
+                        {"bool":{
+                            "should": [ { "match": { "metatag.description": {"query":"{{my_value}}", "boost": 0.01} }}                  ]
+                        }}
+              ]}}
+          ], 
+        "should": [{ "term": { "type": {"value": "text/html", "boost": 1}}}]
+  } 
+},
+"fields": [ "{{#my_fields}}",
+          "{{.}}",
+          "{{/my_fields}}"]
+, "size":  "{{my_size}}"
+,"from": "{{my_from}}"
+}
+
+}
+
+
+
+      
+

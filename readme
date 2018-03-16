@@ -1,0 +1,4 @@
+powershell -ExecutionPolicy unrestricted tools\substitution.ps1 -InputFile <configfile> -OutputFile <outputname> -SubstituteList <substitutions-list>
+
+
+powershell -ExecutionPolicy unrestricted tools\substitution.ps1 -InputFile elastic\etc\elasticsearch.yml -OutputFile elasticsearch.yml -SubstituteList H:\projectGao\search\gitSVN\ES\ES_PROD.xml
