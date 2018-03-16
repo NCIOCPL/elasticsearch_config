@@ -1,0 +1,13 @@
+{
+ "filter": {"term": {"language": "es"}},
+"query":
+{
+  "match": {
+    "term": "{{searchstring}}"
+  }
+  },
+  "sort":{"weight":"desc"}
+  , "_source": ["term"]
+, "size":  "{{my_size}}"
+
+}
