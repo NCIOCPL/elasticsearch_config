@@ -14,7 +14,7 @@
 #
 # Use a descriptive name for your cluster:
 #
-cluster.name: es235_prod
+cluster.name: ${ES_CLUSTER_NAME_235}
 #
 # ------------------------------------ Node ------------------------------------
 #
@@ -75,8 +75,8 @@ http.publish_host: ${HOSTNAMEFULL}
 #
 # Set a custom port for HTTP:
 #
-http.port: 9299
-transport.tcp.port: 9399
+http.port: ${HTTP_PORT_235}
+transport.tcp.port: ${TRANSPORT_PORT_235}
 
 #
 # For more information, see the documentation at:
@@ -87,7 +87,7 @@ transport.tcp.port: 9399
 # Pass an initial list of hosts to perform discovery when new node is started:
 # The default list of hosts is ["127.0.0.1", "[::1]"]
 #
-discovery.zen.ping.unicast.hosts: ["ncias-p1562-v.nci.nih.gov", "ncias-p1563-v.nci.nih.gov", "ncias-p1564-v.nci.nih.gov"]
+discovery.zen.ping.unicast.hosts: [${ES_HOSTS}]
 discovery.zen.ping.timeout: 30s
 #
 # Prevent the "split brain" by configuring the majority of nodes (total number of nodes / 2 + 1):
