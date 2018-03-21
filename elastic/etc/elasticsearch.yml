@@ -1,5 +1,6 @@
 # ======================== Elasticsearch Configuration =========================
 #
+<<<<<<< HEAD
 # NOTE: Elasticsearch comes with reasonable defaults for most settings.
 #       Before you set out to tweak and tune the configuration, make sure you
 #       understand what are you trying to accomplish and the consequences.
@@ -101,6 +102,7 @@ discovery.zen.minimum_master_nodes: 2
 #
 # Block initial recovery after a full cluster restart until N nodes are started:
 #
+<<<<<<< HEAD
 # gateway.recover_after_nodes: 3
 #
 # For more information, see the documentation at:
