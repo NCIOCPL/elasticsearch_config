@@ -2,3 +2,5 @@ powershell -ExecutionPolicy unrestricted tools\substitution.ps1 -InputFile <conf
 
 
 powershell -ExecutionPolicy unrestricted tools\substitution.ps1 -InputFile elastic\etc\elasticsearch.yml -OutputFile elasticsearch.yml -SubstituteList H:\projectGao\search\gitSVN\ES\ES_PROD.xml
+
+python ../substitution.py -inputfile elastic/etc/elasticsearch.yml -outputfile  elastic/etc/elasticsearch.yml -substitutelist ../ES/ES_dev.xml
