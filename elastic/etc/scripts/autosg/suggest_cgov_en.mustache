@@ -1,12 +1,15 @@
 {
- "filter": {"term": {"language": "en"}},
 "query":
 {
-  "match": {
-    "term": "{{searchstring}}"
-  }
-  },
-  "sort":{"weight":"desc"}
+ "bool" : {
+	"filter": {"term": {"language": "en"}},
+	"must" : {
+	"match": {
+		"term": "{{searchstring}}"
+	}}
+	}
+	},
+	"sort":{"weight":"desc"}
   , "_source": ["term"]
 , "size":  "{{my_size}}"
 
