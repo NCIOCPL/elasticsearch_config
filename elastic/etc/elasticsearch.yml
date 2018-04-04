@@ -97,4 +97,4 @@ transport.tcp.port: ${TRANSPORT_PORT_563}
 # Require explicit names when deleting indices:
 #
 #action.destructive_requires_name: true
-http.type: ssl_netty4
+#http.type: ssl_netty4
