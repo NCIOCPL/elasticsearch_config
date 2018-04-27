@@ -1,6 +1,10 @@
 { "template" : {
-  "filter":{"prefix": {"searchurl.raw":"{{my_site}}"}
-  },
+  "filter":
+  { "and" : [
+            {"exists" : {"field" : "searchtitle"}}, 
+			{"prefix": {"searchurl.raw":"{{my_site}}"}}
+			]
+}  ,
    "query": {
       "bool": {
           "must": [
@@ -26,8 +30,3 @@
 }
 
 }
-
-
-
-      
-
