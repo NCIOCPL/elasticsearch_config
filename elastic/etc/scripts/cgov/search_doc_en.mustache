@@ -10,7 +10,7 @@
                         { "match": { "searchurl": {"query":"{{my_value}}", "boost": 1} }},
                        {"match_phrase": { "content": {"query":"{{my_value}}", "boost": 1} }},
                         {"bool":{
-                            "should": [ { "match": { "metatag-description": {"query":"{{my_value}}", "boost": 0.01} }}                  ]
+                            "should": [ { "match": { "metatag.description": {"query":"{{my_value}}", "boost": 0.01} }}                  ]
                         }}
               ]}}
           ], 
