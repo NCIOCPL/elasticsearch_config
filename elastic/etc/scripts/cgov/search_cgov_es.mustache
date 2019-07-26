@@ -1,30 +1,82 @@
-{"query": {
+{
+ "query": {
       "bool": {
-         "must": [
+        "must": [
             {"term":{"metatag.content-language": "es"}},
-            {"bool":{
-                  "should":[
-                        { "match": { "content.es": {"query":"{{my_value}}", "operator" : "and", "boost":1 } }}, 
-                        { "match": { "searchtitle.es": {  "query": "{{my_value}}","boost": 1}}},
-                        { "match": { "searchurl.es": {"query":"{{my_value}}", "boost": 1} }},
-                       
-                        {"bool":{
-                            "should": [ { "match": { "metatag.description.es": {"query":"{{my_value}}", "boost": 0.01} }}                  ]
-                        }}
-              ]}}
-          ], 
-        "should":[
-                 { "term": { "type": {"value": "text/html", "boost": 1}}},
-                   { "bool":  { 
+          {
+            "bool": {
+              "should": [
+                {
+                  "match": {
+                    "content.es": {
+                      "query": "cancer de mama",
+                      "operator": "and",
+                      "boost": 1
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "searchtitle.es": {
+                      "query": "cancer de mama",
+                      "boost": 1
+                    }
+                  }
+                },
+                {
+                  "match": {
+                    "searchurl.es": {
+                      "query": "cancer de mama",
+                      "boost": 1
+                    }
+                  }
+                },
+                {
+                  "bool": {
                     "should": [
-                      { "term": { "host": {"value": "www.cancer.gov", "boost": 10}}}   
-                        
-                  ]
-              }}             
-            ]
-  } 
-},
+                      {
+                        "match": {
+                          "metatag.description.es": {
+                            "query": "cancer de mama",
+                            "boost": 0.01
+                          }
+                        }
+                      }
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ],
+        "should": [
+          {
+            "term": {
+              "type": {
+                "value": "text/html",
+                "boost": 1
+              }
+            }
+          },
+          {
+            "bool": {
+              "should": [
+                {
+                  "term": {
+                    "host": {
+                      "value": "www.cancer.gov",
+                      "boost": 1
+                    }
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      }
+    },
 "_source":  [ {{{my_fields}}} ]
 , "size":  "{{my_size}}"
 ,"from": "{{my_from}}"
-}
+    
+  }
