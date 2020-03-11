@@ -1,80 +1,103 @@
 {     "query": {
-        "bool": {
-          "must": [
-              {"bool": 
-                  {"must":
-                  [
-                  {"exists": {"field": "searchtitle" }},
-                  {"prefix": {"searchurl.raw": "{{my_site}}" } }
-                  ]
-              }},
-            {
-              "bool": {
-                "should": [
-                  {
-                    "match": {
-                      "content": {
-                        "query": "{{my_value}}",
-                        "operator": "and",
-                        "boost": 1
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "searchtitle": {
-                        "query": "{{my_value}}",
-                        "boost": 1
-                      }
-                    }
-                  },
-                  {
-                    "match": {
-                      "searchurl": {
-                        "query": "{{my_value}}",
-                        "boost": 1
-                      }
-                    }
-                  },
-                  {
-                    "match_phrase": {
-                      "content": {
-                        "query": "{{my_value}}",
-                        "boost": 1
-                      }
-                    }
-                  },
-                  {
-                    "bool": {
-                      "should": [
-                        {
-                          "match": {
-                            "metatag.description": {
-                              "query": "{{my_value}}",
-                              "boost": 0.01
-                            }
-                          }
-                        }
-                      ]
-                    }
-                  }
-                ]
-              }
+    "bool": {
+
+    "filter":
+        {"bool": {
+        "should": [
+          {
+            "term": {
+              "metatag.content-language": "en"
             }
-          ],
-          "should": [
-            {
-              "term": {
-                "type": {
-                  "value": "text/html",
-                  "boost": 1
+          },
+          {"bool": {
+              "must_not": {
+                  "exists": {
+                      "field": "metatag.content-language"
+                          }
+                      }
+                  }
+          }
+        ]
+      }}
+    ,
+
+
+      "must": [
+          {"bool": 
+              {"must":
+              [
+              {"exists": {"field": "searchtitle" }},
+              {"prefix": {"searchurl.raw": "{{my_site}}" } }
+              ]
+          }},
+        {
+          "bool": {
+            "should": [
+              {
+                "match": {
+                  "content": {
+                    "query": "{{my_value}}",
+                    "operator": "and",
+                    "boost": 2
+                  }
+                }
+              },
+              {
+                "match": {
+                  "searchtitle": {
+                    "query": "{{my_value}}",
+                    "boost": 2
+                  }
+                }
+              },
+              {
+                "match": {
+                  "searchurl": {
+                    "query": "{{my_value}}",
+                    "boost": 3
+                  }
+                }
+              },
+              {
+                "match_phrase": {
+                  "content": {
+                    "query": "{{my_value}}",
+                    "boost": 3
+                  }
+                }
+              },
+              {
+                "bool": {
+                  "should": [
+                    {
+                      "match": {
+                        "metatag.description": {
+                          "query": "{{my_value}}",
+                          "boost": 0.01
+                        }
+                      }
+                    }
+                  ]
                 }
               }
-            }
-          ]
+            ]
+          }
         }
-      },
-"_source":  [ {{{my_fields}}} ]
-, "size":  "{{my_size}}"
-,"from": "{{my_from}}"
+      ],
+      "should": [
+        {
+          "term": {
+            "type": {
+              "value": "text/html",
+              "boost": 2
+            }
+          }
+        }
+      ]
+    }
   }
+  ,
+  "_source":  [ {{{my_fields}}} ]
+  , "size":  "{{my_size}}"
+  ,"from": "{{my_from}}"
+}
