@@ -34,18 +34,18 @@ fi
 # Sets the default values for elasticsearch variables used in this script
 ES_USER="elasticsearch"
 ES_GROUP="search"
-ES_HOME="/usr/local/elasticsearch/elasticsearch-5.6.9"
+ES_HOME="/usr/local/elasticsearch/elasticsearch-5.6.16"
 MAX_OPEN_FILES=65535
 MAX_MAP_COUNT=262144
-LOG_DIR="/data/elastic569/log"
-DATA_DIR="/data/elastic569/data"
-WORK_DIR="/data/elastic569/tmp"
-CONF_DIR="/data/elastic569/etc"
-#CONF_FILE="/data/elastic569/etc/elasticsearch.yml"
-PID_DIR="/data/elastic569/run"
-
+LOG_DIR="/data/elastic5616/log"
+DATA_DIR="/data/elastic5616/data"
+WORK_DIR="/data/elastic5616/tmp"
+CONF_DIR="/data/elastic5616/etc"
+CONF_FILE="/data/elastic5616/etc/elasticsearch.yml"
+PID_DIR="/data/elastic5616/run"
+ES_JAVA_OPTS="-Djna.tmpdir=/data/elastic5616/tmp"
 # Source the default env file
-ES_ENV_FILE="/etc/sysconfig/elasticsearch569"
+ES_ENV_FILE="/etc/sysconfig/elasticsearch5616"
 if [ -f "$ES_ENV_FILE" ]; then
     . "$ES_ENV_FILE"
 fi
@@ -59,9 +59,8 @@ export ES_HEAP_NEWSIZE
 export ES_DIRECT_SIZE
 export ES_JAVA_OPTS
 export JAVA_HOME
-export ES_JVM_OPTIONS
 
-lockfile=/var/lock/subsys/${prog}569
+lockfile=/var/lock/subsys/${prog}5616
 
 # backwards compatibility for old config sysconfig files, pre 0.90.1
 if [ -n $USER ] && [ -z $ES_USER ] ; then 
@@ -160,5 +159,6 @@ case "$1" in
         exit 2
 esac
 exit $?
+
 
 
