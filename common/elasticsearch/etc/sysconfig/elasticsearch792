@@ -3,22 +3,22 @@
 ################################
 
 # Elasticsearch home directory
-ES_HOME=/usr/local/elasticsearch/elasticsearch-5.6.16
+ES_HOME=/usr/local/elasticsearch/elasticsearch-7.9.2
 
 # Elasticsearch configuration directory
-CONF_DIR=/data/elastic5616/etc
+CONF_DIR=/data/elastic792/etc
 
 # Elasticsearch configuration file
 CONF_FILE=$CONF_DIR/elasticsearch.yml
 
 # Elasticsearch data directory
-DATA_DIR=/data/elastic5616/data
+DATA_DIR=/data/elastic792/data
 
 # Elasticsearch logs directory
-LOG_DIR=/data/elastic5616/log
+LOG_DIR=/data/elastic792/log
 
 # Elasticsearch PID directory
-PID_DIR=/data/elastic5616/run
+PID_DIR=/data/elastic792/run
 
 
 # Path to the GC log file
